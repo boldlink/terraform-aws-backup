@@ -77,6 +77,7 @@ No modules.
 | <a name="input_plan_name"></a> [plan\_name](#input\_plan\_name) | (Required) The display name of a backup plan. | `string` | n/a | yes |
 | <a name="input_resources"></a> [resources](#input\_resources) | (Optional) An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan. | `list(string)` | `[]` | no |
 | <a name="input_selection_tags"></a> [selection\_tags](#input\_selection\_tags) | A list of selection tags map | `list(any)` | `[]` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | (Optional) Metadata that you can assign to help organize the plans you create. If configured with a provider default\_tags configuration block present, tags with matching keys will overwrite those defined at the provider-level. | `map(string)` | `{}` | no |
 
 ## Outputs
 
