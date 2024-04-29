@@ -28,9 +28,9 @@ variable "iam_role_arn" {
 }
 
 variable "create_backup_selection" {
-    description = "Whether to create backup selection resource or not"
-    type = bool
-    default = false  
+  description = "Whether to create backup selection resource or not"
+  type        = bool
+  default     = false
 }
 
 variable "resources" {

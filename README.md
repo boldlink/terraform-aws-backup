@@ -71,6 +71,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_backup_rules"></a> [backup\_rules](#input\_backup\_rules) | A list of rules mapping rule configurations for a backup plan | `any` | `[]` | no |
+| <a name="input_create_backup_selection"></a> [create\_backup\_selection](#input\_create\_backup\_selection) | Whether to create backup selection resource or not | `bool` | `false` | no |
 | <a name="input_create_iam_role"></a> [create\_iam\_role](#input\_create\_iam\_role) | Whether to create the IAM Role used to authenticate when restoring and backing up the target resources | `bool` | `true` | no |
 | <a name="input_iam_role_arn"></a> [iam\_role\_arn](#input\_iam\_role\_arn) | he ARN of the IAM role that AWS Backup uses to authenticate when restoring and backing up the target resource. | `string` | `null` | no |
 | <a name="input_not_resources"></a> [not\_resources](#input\_not\_resources) | (Optional) An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to exclude from a backup plan. | `list(string)` | `[]` | no |

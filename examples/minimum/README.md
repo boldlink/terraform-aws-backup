@@ -30,6 +30,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_backup_plan"></a> [backup\_plan](#module\_backup\_plan) | ./../../ | n/a |
 | <a name="module_backup_vault"></a> [backup\_vault](#module\_backup\_vault) | ./../../modules/vault | n/a |
 
 ## Resources
@@ -38,7 +39,9 @@ No resources.
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_name"></a> [name](#input\_name) | The display name of a backup plan. | `string` | `"Example-mimimum-backup"` | no |
 
 ## Outputs
 
