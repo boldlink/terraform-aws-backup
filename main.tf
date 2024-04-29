@@ -10,14 +10,13 @@ resource "aws_backup_plan" "main" {
       start_window             = lookup(rule.value, "start_window", null)
       completion_window        = lookup(rule.value, "completion_window", null)
       dynamic "lifecycle" {
-        for_each = lookup(rule.value, "lifecycle") == null ? [] : [true]
+        for_each = lookup(rule.value, "lifecycle", null) == null ? [] : [true]
         content {
           cold_storage_after = lookup(lifecycle.value, "cold_storage_after", null)
           delete_after       = lookup(lifecycle.value, "delete_after", null)
         }
       }
     }
-
   }
   tags = var.tags
 }
@@ -35,6 +34,7 @@ resource "aws_iam_role_policy_attachment" "main" {
 }
 
 resource "aws_backup_selection" "main" {
+    count = var.create_backup_selection ? 1 : 0
   plan_id       = aws_backup_plan.main.id
   iam_role_arn  = var.create_iam_role ? aws_iam_role.main[0].arn : var.iam_role_arn
   name          = "${var.plan_name}-assignment"

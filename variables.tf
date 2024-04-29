@@ -27,6 +27,12 @@ variable "iam_role_arn" {
   default     = null
 }
 
+variable "create_backup_selection" {
+    description = "Whether to create backup selection resource or not"
+    type = bool
+    default = false  
+}
+
 variable "resources" {
   description = "(Optional) An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan."
   type        = list(string)
