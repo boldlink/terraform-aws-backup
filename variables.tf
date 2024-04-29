@@ -9,6 +9,12 @@ variable "backup_rules" {
   default     = []
 }
 
+variable "tags" {
+  description = "(Optional) Metadata that you can assign to help organize the plans you create. If configured with a provider default_tags configuration block present, tags with matching keys will overwrite those defined at the provider-level."
+  type        = map(string)
+  default     = {}
+}
+
 variable "create_iam_role" {
   description = "Whether to create the IAM Role used to authenticate when restoring and backing up the target resources"
   type        = bool

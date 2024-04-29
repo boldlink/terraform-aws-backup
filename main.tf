@@ -19,6 +19,7 @@ resource "aws_backup_plan" "main" {
     }
 
   }
+  tags = var.tags
 }
 
 resource "aws_iam_role" "main" {
