@@ -11,19 +11,17 @@
 
 [<img src="https://avatars.githubusercontent.com/u/25388280?s=200&v=4" width="96"/>](https://boldlink.io)
 
-# Terraform  module \<PROVIDER>-\<MODULE>\<NESTED_MODULE> Terraform module
+# AWS Backup Vault Terraform module
 
 \<Description>
 
-This terraform module lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ipsum lorem ipsum ipsum lorem ipsum ipsum lorem ipsum.
-
-Examples available [`here`]github.com/boldlink/<REPO_NAME>//tree/main/examples)
+This terraform sub-module creates a backup vault in AWS.
 
 ## Usage
 *NOTE*: These examples use the latest version of this module
 
 ```console
-module "miniumum" {
+module "backup_vault" {
   source  = "boldlink/<module_name>/<provider>//modules/<nested_name>"
   version = "x.x.x"
   # insert the minimum required variables here
@@ -32,9 +30,9 @@ module "miniumum" {
 ```
 ## Documentation
 
-[Amazon Documentation](https://link)
+[Amazon Documentation](https://docs.aws.amazon.com/aws-backup/latest/devguide/vaults.html)
 
-[Terraform module documentation](https://link)
+[Terraform module documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/backup_vault)
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -78,4 +76,4 @@ This repository uses third party software:
   * Install with `brew install tflint`
   * Manually use via pre-commit
 
-#### BOLDLink-SIG 2022
+#### BOLDLink-SIG 2024
