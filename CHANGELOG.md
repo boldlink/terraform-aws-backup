@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - feat: advanced backup settings
 - feat: copy action arguments
 
-## [1.0.0] - YYYY-MM-DD
+## [1.0.0] - 29-04-2024
 ### Description
 - feat: AWS backup vault
 - feat: AWS backup plan and selection conditions
@@ -16,6 +16,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Examples with minimum and complete configuration
 
 [Unreleased]: https://github.com/boldlink/terraform-aws-backup/compare/1.0.0...HEAD
-
 
 [1.0.0]: https://github.com/boldlink/terraform-aws-backup/releases/tag/1.0.0
