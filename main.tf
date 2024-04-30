@@ -9,6 +9,7 @@ resource "aws_backup_plan" "main" {
       enable_continuous_backup = lookup(rule.value, "enable_continuous_backup", null)
       start_window             = lookup(rule.value, "start_window", null)
       completion_window        = lookup(rule.value, "completion_window", null)
+      recovery_point_tags      = lookup(rule.value, "recovery_point_tags", null)
       dynamic "lifecycle" {
         for_each = lookup(rule.value, "lifecycle", null) == null ? [] : [true]
         content {
@@ -27,9 +28,15 @@ resource "aws_iam_role" "main" {
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
 
-resource "aws_iam_role_policy_attachment" "main" {
+resource "aws_iam_role_policy_attachment" "backup" {
   count      = var.create_iam_role ? 1 : 0
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup"
+  role       = aws_iam_role.main[0].name
+}
+
+resource "aws_iam_role_policy_attachment" "restore" {
+  count      = var.create_iam_role ? 1 : 0
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForRestores"
   role       = aws_iam_role.main[0].name
 }
 

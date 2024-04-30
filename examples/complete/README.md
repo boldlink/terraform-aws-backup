@@ -34,6 +34,7 @@
 |------|--------|---------|
 | <a name="module_backup_plan"></a> [backup\_plan](#module\_backup\_plan) | ./../../ | n/a |
 | <a name="module_backup_vault"></a> [backup\_vault](#module\_backup\_vault) | ./../../modules/vault | n/a |
+| <a name="module_cold_storage_plan"></a> [cold\_storage\_plan](#module\_cold\_storage\_plan) | ./../../ | n/a |
 | <a name="module_kms"></a> [kms](#module\_kms) | boldlink/kms/aws | 1.2.0 |
 | <a name="module_sns_topic"></a> [sns\_topic](#module\_sns\_topic) | boldlink/sns/aws | n/a |
 

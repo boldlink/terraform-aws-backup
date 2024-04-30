@@ -64,6 +64,8 @@ variable "name" {
 **NOTE**
 - Support for specifying both a day-of-week AND a day-of-month parameter in backup rules is currently not implemented by AWS.
 - If you enable `enable_continuous_backup`, `cold_storage_after` must not be specified.
+- Continuous backups and point-in-time restore (PITR) reference the changes recorded over a period of time; therefore, they cannot be scheduled with a time or cron expression.
+- You can store continuous backups for up to 35 days.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

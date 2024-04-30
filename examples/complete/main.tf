@@ -6,14 +6,14 @@ module "kms" {
   alias_name              = "alias/${var.name}-kms"
   create_kms_alias        = true
   deletion_window_in_days = var.deletion_window_in_days
-  tags                    = local.tags
+  tags                    = merge({ Name = "${var.name}-kms" }, var.tags)
 }
 
 module "sns_topic" {
   #checkov:skip=CKV_TF_1 #"Ensure Terraform module sources use a commit hash"
   source = "boldlink/sns/aws"
   name   = "${var.name}-topic"
-  tags   = local.tags
+  tags   = merge({ Name = "${var.name}-topic" }, var.tags)
 }
 
 module "backup_vault" {
@@ -25,7 +25,7 @@ module "backup_vault" {
   sns_notify          = var.sns_notify
   sns_topic_arn       = module.sns_topic.arn
   backup_vault_events = var.backup_vault_events
-  tags                = local.tags
+  tags                = merge({ Name = "${var.name}-vault" }, var.tags)
 }
 
 module "backup_plan" {
@@ -33,33 +33,71 @@ module "backup_plan" {
   plan_name = "${var.name}-plan"
   backup_rules = [
     {
-      rule_name                = "${var.name}-rule"
+      rule_name           = "${var.name}-rule"
+      target_vault_name   = module.backup_vault.id[0]
+      schedule            = "cron(20 0/1 ? * * *)"
+      start_window        = 60
+      completion_window   = 120
+      recovery_point_tags = merge({ Name = "${var.name}-rule" }, var.tags)
+      lifecycle = {
+        delete_after = 30
+      }
+    },
+    {
+      rule_name                = "${var.name}-continous-rule"
       target_vault_name        = module.backup_vault.id[0]
       schedule                 = "cron(0 1 ? * * *)"
       enable_continuous_backup = true
-      start_window             = 480
-      completion_window        = 10080
+      start_window             = 60
+      completion_window        = 120
+      recovery_point_tags      = merge({ Name = "${var.name}-continous-rule" }, var.tags)
       lifecycle = {
-        #cold_storage_after = 7
-        delete_after = 30
+        delete_after = 35 #Maximum
       }
     },
   ]
   resource_assignments = [
     {
-      name = "${var.name}-assignment1"
+      name      = "${var.name}-resource-assignment1"
+      resources = ["arn:aws:ec2:*:*:instance/*"]
       selection_tag = [
         {
           type  = "STRINGEQUALS"
-          key   = "aws:ResourceTag/aws::backup"
+          key   = "aws:ResourceTag/backup"
           value = true
         }
       ]
     },
     {
-      name      = "${var.name}-assignment2"
+      name      = "${var.name}-resource-assignment2"
       resources = ["arn:aws:rds:*:*:cluster:*"]
     }
   ]
-  tags = local.tags
+  tags = merge({ Name = "${var.name}-plan" }, var.tags)
+}
+
+## Cold Storage
+module "cold_storage_plan" {
+  source    = "./../../"
+  plan_name = "${var.name}-cold-storage-plan"
+  backup_rules = [
+    {
+      rule_name         = "${var.name}-cold-storage-rule"
+      target_vault_name = module.backup_vault.id[0]
+      schedule          = "cron(0 1 ? * * *)"
+      start_window      = 480
+      completion_window = 10080
+      lifecycle = {
+        cold_storage_after = 7
+        delete_after       = 100
+      }
+    },
+  ]
+  resource_assignments = [
+    {
+      name      = "${var.name}-resource-assignment1"
+      resources = ["*"]
+    }
+  ]
+  tags = merge({ Name = "${var.name}-cold-storage-plan" }, var.tags)
 }
