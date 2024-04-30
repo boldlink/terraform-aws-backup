@@ -34,18 +34,18 @@ resource "aws_iam_role_policy_attachment" "main" {
 }
 
 resource "aws_backup_selection" "main" {
-  count         = var.create_backup_selection ? 1 : 0
+  count         = length(var.resource_assignments) > 0 ? length(var.resource_assignments) : 0
   plan_id       = aws_backup_plan.main.id
   iam_role_arn  = var.create_iam_role ? aws_iam_role.main[0].arn : var.iam_role_arn
-  name          = "${var.plan_name}-assignment"
-  resources     = var.resources
-  not_resources = var.not_resources
+  name          = var.resource_assignments[count.index]["name"]
+  resources     = try(var.resource_assignments[count.index]["resources"], null)
+  not_resources = try(var.resource_assignments[count.index]["not_resources"], null)
   dynamic "selection_tag" {
-    for_each = var.selection_tags
+    for_each = lookup(var.resource_assignments[count.index], "selection_tag", {})
     content {
-      type  = lookup(selection_tag.value, "type", null)
-      key   = lookup(selection_tag.value, "key", null)
-      value = lookup(selection_tag.value, "value", null)
+      type  = selection_tag.value.type
+      key   = selection_tag.value.key
+      value = selection_tag.value.value
     }
   }
 }

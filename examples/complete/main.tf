@@ -45,5 +45,21 @@ module "backup_plan" {
       }
     },
   ]
+  resource_assignments = [
+    {
+      name = "${var.name}-assignment1"
+      selection_tag = [
+        {
+          type  = "STRINGEQUALS"
+          key   = "aws:ResourceTag/aws::backup"
+          value = true
+        }
+      ]
+    },
+    {
+      name      = "${var.name}-assignment2"
+      resources = ["arn:aws:rds:*:*:cluster:*"]
+    }
+  ]
   tags = local.tags
 }

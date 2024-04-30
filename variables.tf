@@ -27,26 +27,8 @@ variable "iam_role_arn" {
   default     = null
 }
 
-variable "create_backup_selection" {
-  description = "Whether to create backup selection resource or not"
-  type        = bool
-  default     = false
-}
-
-variable "resources" {
-  description = "(Optional) An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan."
-  type        = list(string)
-  default     = []
-}
-
-variable "not_resources" {
-  description = "(Optional) An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to exclude from a backup plan."
-  type        = list(string)
-  default     = []
-}
-
-variable "selection_tags" {
-  description = "A list of selection tags map"
-  type        = list(any)
+variable "resource_assignments" {
+  description = "A list of maps describing the resource assignments for the backup plan"
+  type        = any
   default     = []
 }
