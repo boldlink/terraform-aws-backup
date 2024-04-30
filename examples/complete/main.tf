@@ -23,6 +23,7 @@ module "backup_vault" {
   kms_key_arn         = module.kms.arn
   force_destroy       = var.force_destroy
   sns_notify          = var.sns_notify
+  create_backup_vault_policy = var.create_backup_vault_policy
   sns_topic_arn       = module.sns_topic.arn
   backup_vault_events = var.backup_vault_events
   tags                = merge({ Name = "${var.name}-vault" }, var.tags)

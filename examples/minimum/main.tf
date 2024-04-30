@@ -10,6 +10,7 @@ module "backup_plan" {
     {
       rule_name         = "${var.name}-rule"
       target_vault_name = module.backup_vault.id[0]
+      schedule          = "cron(0 1 ? * * *)"
     },
   ]
 }

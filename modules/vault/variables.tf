@@ -30,7 +30,7 @@ variable "tags" {
 variable "create_backup_vault_policy" {
   description = "Whether to create AWS backup Vault policy or not"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "backup_vault_policy" {
