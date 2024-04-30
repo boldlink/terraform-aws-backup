@@ -14,11 +14,12 @@ data "aws_iam_policy_document" "vault" {
     actions = [
       "backup:DescribeBackupVault",
       "backup:PutBackupVaultAccessPolicy",
-      "backup:DeleteBackupVaultAccessPolicy",
       "backup:GetBackupVaultAccessPolicy",
       "backup:StartBackupJob",
       "backup:GetBackupVaultNotifications",
-      "backup:PutBackupVaultNotifications"
+      "backup:PutBackupVaultNotifications",
+      "backup:DeleteBackupVault",
+      "backup:DeleteBackupVaultAccessPolicy",
     ]
     resources = module.backup_vault.arn
   }
