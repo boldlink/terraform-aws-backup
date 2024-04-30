@@ -3,7 +3,7 @@ resource "aws_backup_plan" "main" {
   dynamic "rule" {
     for_each = var.backup_rules
     content {
-      rule_name                = lookup(rule.value, "rule_name",)
+      rule_name                = lookup(rule.value, "rule_name", )
       target_vault_name        = lookup(rule.value, "target_vault_name")
       schedule                 = lookup(rule.value, "schedule")
       enable_continuous_backup = lookup(rule.value, "enable_continuous_backup", null)

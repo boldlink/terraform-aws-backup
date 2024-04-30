@@ -71,7 +71,8 @@ No modules.
 | <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | (Optional, Default: false) A boolean that indicates that all recovery points stored in the vault are deleted so that the vault can be destroyed without error. | `bool` | `false` | no |
 | <a name="input_kms_key_arn"></a> [kms\_key\_arn](#input\_kms\_key\_arn) | (Optional) The server-side encryption key that is used to protect your backups. | `string` | `null` | no |
 | <a name="input_name"></a> [name](#input\_name) | (Required) Name of the backup vault to create. | `string` | n/a | yes |
-| <a name="input_sns_topic_arn"></a> [sns\_topic\_arn](#input\_sns\_topic\_arn) | The Amazon Resource Name (ARN) that specifies the topic for a backup vault’s events | `string` | `null` | no |
+| <a name="input_sns_notify"></a> [sns\_notify](#input\_sns\_notify) | Whether to create AWS Backup vault notifications resource. | `bool` | `false` | no |
+| <a name="input_sns_topic_arn"></a> [sns\_topic\_arn](#input\_sns\_topic\_arn) | The Amazon Resource Name (ARN) that specifies the topic for a backup vault’s events | `string` | `""` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | (Optional) Metadata that you can assign to help organize the resources that you create. If configured with a provider default\_tags configuration block present, tags with matching keys will overwrite those defined at the provider-level. | `map(string)` | `{}` | no |
 
 ## Outputs

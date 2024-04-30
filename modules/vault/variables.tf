@@ -47,8 +47,8 @@ variable "backup_vault_events" {
 
 variable "sns_notify" {
   description = "Whether to create AWS Backup vault notifications resource."
-  type = bool
-  default = false  
+  type        = bool
+  default     = false
 }
 
 variable "sns_topic_arn" {
