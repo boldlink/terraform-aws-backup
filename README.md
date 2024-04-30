@@ -17,7 +17,13 @@
 
 AWS Backup is a fully-managed service that makes it easy to centralize and automate data protection across AWS services, in the cloud, and on premises.
 
-This terraform module creates a Backup vault, backup plan and the associated resources in AWS.
+This Terraform module provisions and manages AWS Backup resources including backup plans, IAM roles, backup vaults, and related configurations.
+
+## Why use this module over standard resources
+- Simplified Management: Abstracts away the complexity of provisioning and configuring AWS Backup resources, reducing the potential for errors and streamlining management tasks.
+- Consistent Configuration: Ensures consistency in backup plan configurations across environments, promoting best practices and compliance with organizational policies.
+- Scalability: Easily scale your backup infrastructure by defining multiple backup plans and vaults, adapting to changing backup requirements without manual intervention.
+- Flexibility: Customize backup rules, IAM roles, vault policies, and SNS notifications to suit your specific backup and recovery needs, providing a tailored solution for your applications and data.
 
 Examples available [`here`](https://github.com/boldlink/terraform-aws-backup/tree/main/examples)
 
@@ -25,11 +31,28 @@ Examples available [`here`](https://github.com/boldlink/terraform-aws-backup/tre
 *NOTE*: These examples use the latest version of this module
 
 ```console
-module "miniumum" {
-  source  = "boldlink/<module_name>/<provider>"
-  version = "x.x.x"
-  <insert the minimum required variables here if any are required>
-  ...
+module "backup_vault" {
+  source  = "boldlink/backup/aws//modules/vault"
+  version = "<enter_latest_version_here>"
+  name    = "${var.name}-vault"
+}
+
+module "backup_plan" {
+  source          = "boldlink/backup/aws"
+  version         = "<enter_latest_version_here>"
+  plan_name = "${var.name}-plan"
+  backup_rules = [
+    {
+      rule_name         = "${var.name}-rule"
+      target_vault_name = module.backup_vault.id[0]
+    },
+  ]
+}
+
+variable "name" {
+  description = "The display name of the stack"
+  type        = string
+  default     = "Example-minimum-backup"
 }
 ```
 ## Documentation
@@ -37,6 +60,10 @@ module "miniumum" {
 [AWS Backup Documentation](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html)
 
 [Terraform module documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/backup_plan)
+
+**NOTE**
+- Support for specifying both a day-of-week AND a day-of-month parameter in backup rules is currently not implemented by AWS.
+- If you enable `enable_continuous_backup`, `cold_storage_after` must not be specified.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -63,7 +90,8 @@ No modules.
 | [aws_backup_plan.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/backup_plan) | resource |
 | [aws_backup_selection.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/backup_selection) | resource |
 | [aws_iam_role.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
-| [aws_iam_role_policy_attachment.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.backup](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.restore](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_policy_document.assume_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs

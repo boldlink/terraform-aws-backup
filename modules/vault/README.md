@@ -13,19 +13,24 @@
 
 # AWS Backup Vault Terraform module
 
-\<Description>
+## Description
 
-This terraform sub-module creates a backup vault in AWS.
+This terraform sub-module creates a backup vault, vault policy and vault notification resource in AWS.
 
 ## Usage
 *NOTE*: These examples use the latest version of this module
 
 ```console
 module "backup_vault" {
-  source  = "boldlink/<module_name>/<provider>//modules/<nested_name>"
-  version = "x.x.x"
-  # insert the minimum required variables here
-  ...
+  source  = "boldlink/backup/aws//modules/vault"
+  version = "<insert_latest_version_here>"
+  name    = "${var.name}-vault"
+}
+
+variable "name" {
+  description = "The display name of the stack"
+  type        = string
+  default     = "Example-minimum-backup"
 }
 ```
 ## Documentation
