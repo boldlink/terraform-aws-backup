@@ -3,17 +3,17 @@ resource "aws_backup_plan" "main" {
   dynamic "rule" {
     for_each = var.backup_rules
     content {
-      rule_name                = lookup(rule.value, "name", rule.key)
+      rule_name                = lookup(rule.value, "rule_name",)
       target_vault_name        = lookup(rule.value, "target_vault_name")
-      schedule                 = lookup(rule.value, "schedule", null)
+      schedule                 = lookup(rule.value, "schedule")
       enable_continuous_backup = lookup(rule.value, "enable_continuous_backup", null)
       start_window             = lookup(rule.value, "start_window", null)
       completion_window        = lookup(rule.value, "completion_window", null)
       dynamic "lifecycle" {
         for_each = lookup(rule.value, "lifecycle", null) == null ? [] : [true]
         content {
-          cold_storage_after = lookup(lifecycle.value, "cold_storage_after", null)
-          delete_after       = lookup(lifecycle.value, "delete_after", null)
+          cold_storage_after = lookup(rule.value, "enable_continuous_backup", null) == null ? lookup(rule.value.lifecycle, "cold_storage_after", null) : null
+          delete_after       = lookup(rule.value.lifecycle, "delete_after", null)
         }
       }
     }

@@ -45,8 +45,14 @@ variable "backup_vault_events" {
   default     = []
 }
 
+variable "sns_notify" {
+  description = "Whether to create AWS Backup vault notifications resource."
+  type = bool
+  default = false  
+}
+
 variable "sns_topic_arn" {
   description = "The Amazon Resource Name (ARN) that specifies the topic for a backup vault’s events"
   type        = string
-  default     = null
+  default     = ""
 }

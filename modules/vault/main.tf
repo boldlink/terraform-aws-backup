@@ -13,7 +13,7 @@ resource "aws_backup_vault_policy" "main" {
 }
 
 resource "aws_backup_vault_notifications" "main" {
-  count               = var.create_backup_vault && var.sns_topic_arn != null ? 1 : 0
+  count               = var.create_backup_vault && var.sns_notify ? 1 : 0
   backup_vault_name   = aws_backup_vault.main[0].name
   sns_topic_arn       = var.sns_topic_arn
   backup_vault_events = var.backup_vault_events
