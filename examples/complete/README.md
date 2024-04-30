@@ -45,7 +45,7 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_name"></a> [name](#input\_name) | The display name of a backup plan. | `string` | `"Example-complete-backup"` | no |
+| <a name="input_name"></a> [name](#input\_name) | The display name of the stack. | `string` | `"Example-complete-backup"` | no |
 
 ## Outputs
 
