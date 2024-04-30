@@ -8,9 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - feat: advanced backup settings
 - feat: copy action arguments
 
-## [1.0.0] - 29-04-2024
+## [1.0.0] - 30-04-2024
 ### Description
-- feat: AWS backup vault
+- feat: AWS backup vault submodule
 - feat: AWS backup plan and selection conditions
 - feat: Custom IAM role to authenticate when restoring and backing up the target resources
 - Examples with minimum and complete configuration
