@@ -7,9 +7,9 @@ resource "aws_backup_vault" "main" {
 }
 
 resource "aws_backup_vault_policy" "main" {
-  count             = var.create_backup_vault && var.aws_backup_vault_policy != "" ? 1 : 0
+  count             = var.create_backup_vault && var.create_backup_vault_policy != "" ? 1 : 0
   backup_vault_name = aws_backup_vault.main[0].name
-  policy            = var.aws_backup_vault_policy
+  policy            = var.backup_vault_policy
 }
 
 resource "aws_backup_vault_notifications" "main" {

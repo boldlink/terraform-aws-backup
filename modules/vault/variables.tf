@@ -27,7 +27,13 @@ variable "tags" {
   default     = {}
 }
 
-variable "aws_backup_vault_policy" {
+variable "create_backup_vault_policy" {
+  description = "Whether to create AWS backup Vault policy or not"
+  type        = bool
+  default     = true
+}
+
+variable "backup_vault_policy" {
   description = "The backup vault access policy document in JSON format."
   type        = string
   default     = ""

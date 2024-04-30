@@ -64,9 +64,10 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_aws_backup_vault_policy"></a> [aws\_backup\_vault\_policy](#input\_aws\_backup\_vault\_policy) | The backup vault access policy document in JSON format. | `string` | `""` | no |
 | <a name="input_backup_vault_events"></a> [backup\_vault\_events](#input\_backup\_vault\_events) | An array of events that indicate the status of jobs to back up resources to the backup vault. | `list(string)` | `[]` | no |
+| <a name="input_backup_vault_policy"></a> [backup\_vault\_policy](#input\_backup\_vault\_policy) | The backup vault access policy document in JSON format. | `string` | `""` | no |
 | <a name="input_create_backup_vault"></a> [create\_backup\_vault](#input\_create\_backup\_vault) | Whether to create AWS backup Vault or not | `bool` | `true` | no |
+| <a name="input_create_backup_vault_policy"></a> [create\_backup\_vault\_policy](#input\_create\_backup\_vault\_policy) | Whether to create AWS backup Vault policy or not | `bool` | `true` | no |
 | <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | (Optional, Default: false) A boolean that indicates that all recovery points stored in the vault are deleted so that the vault can be destroyed without error. | `bool` | `false` | no |
 | <a name="input_kms_key_arn"></a> [kms\_key\_arn](#input\_kms\_key\_arn) | (Optional) The server-side encryption key that is used to protect your backups. | `string` | `null` | no |
 | <a name="input_name"></a> [name](#input\_name) | (Required) Name of the backup vault to create. | `string` | n/a | yes |
@@ -79,6 +80,7 @@ No modules.
 |------|-------------|
 | <a name="output_arn"></a> [arn](#output\_arn) | The ARN of the vault. |
 | <a name="output_id"></a> [id](#output\_id) | The name of the vault. |
+| <a name="output_recovery_points"></a> [recovery\_points](#output\_recovery\_points) | The number of recovery points that are stored in a backup vault. |
 | <a name="output_tags_all"></a> [tags\_all](#output\_tags\_all) | A map of tags assigned to the resource, including those inherited from the provider default\_tags configuration block. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

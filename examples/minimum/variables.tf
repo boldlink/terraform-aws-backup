@@ -1,5 +1,5 @@
 variable "name" {
-  description = "The display name of a backup plan."
+  description = "The display name of the stack"
   type        = string
-  default     = "Example-mimimum-backup"
+  default     = "Example-minimum-backup"
 }

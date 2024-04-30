@@ -24,21 +24,28 @@
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.47.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_backup_plan"></a> [backup\_plan](#module\_backup\_plan) | ./../../ | n/a |
 | <a name="module_backup_vault"></a> [backup\_vault](#module\_backup\_vault) | ./../../modules/vault | n/a |
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [aws_iam_policy_document.vault](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_name"></a> [name](#input\_name) | The display name of a backup plan. | `string` | `"Example-complete-backup"` | no |
 
 ## Outputs
 
