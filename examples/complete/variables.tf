@@ -13,7 +13,7 @@ variable "deletion_window_in_days" {
 variable "tags" {
   description = "(Optional) Metadata that you can assign to help organize the resources that you create. If configured with a provider default_tags configuration block present, tags with matching keys will overwrite those defined at the provider-level."
   type        = map(string)
-  default     = {
+  default = {
     Environment        = "examples"
     Project            = "terraform-modules"
     "user::CostCenter" = "terraform"

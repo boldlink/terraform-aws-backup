@@ -34,6 +34,7 @@
 |------|--------|---------|
 | <a name="module_backup_plan"></a> [backup\_plan](#module\_backup\_plan) | ./../../ | n/a |
 | <a name="module_backup_vault"></a> [backup\_vault](#module\_backup\_vault) | ./../../modules/vault | n/a |
+| <a name="module_kms"></a> [kms](#module\_kms) | boldlink/kms/aws | 1.2.0 |
 
 ## Resources
 
@@ -47,7 +48,9 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_deletion_window_in_days"></a> [deletion\_window\_in\_days](#input\_deletion\_window\_in\_days) | The waiting period, specified in number of days. After the waiting period ends, AWS KMS deletes the KMS key. If you specify a value, it must be between 7 and 30, inclusive. If you do not specify a value, it defaults to 30. If the KMS key is a multi-Region primary key with replicas, the waiting period begins when the last of its replica keys is deleted. Otherwise, the waiting period begins immediately. | `number` | `7` | no |
 | <a name="input_name"></a> [name](#input\_name) | The display name of the stack. | `string` | `"Example-complete-backup"` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | (Optional) Metadata that you can assign to help organize the resources that you create. If configured with a provider default\_tags configuration block present, tags with matching keys will overwrite those defined at the provider-level. | `map(string)` | <pre>{<br>  "Department": "devops",<br>  "Environment": "examples",<br>  "LayerId": "Examples",<br>  "LayerName": "Exampls",<br>  "Owner": "Boldlink",<br>  "Project": "terraform-modules",<br>  "user::CostCenter": "terraform"<br>}</pre> | no |
 
 ## Outputs
 

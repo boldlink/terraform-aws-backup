@@ -13,7 +13,7 @@ module "backup_vault" {
   name                = "${var.name}-vault"
   backup_vault_policy = data.aws_iam_policy_document.vault.json
   kms_key_arn         = module.kms.arn
-  tags                    = local.tags
+  tags                = local.tags
 }
 
 module "backup_plan" {
@@ -25,5 +25,5 @@ module "backup_plan" {
       target_vault_name = module.backup_vault.id[0]
     },
   ]
-  tags                    = local.tags
+  tags = local.tags
 }
