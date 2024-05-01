@@ -1,13 +1,13 @@
-[![License](https://img.shields.io/badge/License-Apache-blue.svg)](https://github.com/boldlink/terraform-module-template/blob/main/LICENSE)
-[![Latest Release](https://img.shields.io/github/release/boldlink/terraform-module-template.svg)](https://github.com/boldlink/terraform-module-template/releases/latest)
-[![Build Status](https://github.com/boldlink/terraform-module-template/actions/workflows/update.yaml/badge.svg)](https://github.com/boldlink/terraform-module-template/actions)
-[![Build Status](https://github.com/boldlink/terraform-module-template/actions/workflows/release.yaml/badge.svg)](https://github.com/boldlink/terraform-module-template/actions)
-[![Build Status](https://github.com/boldlink/terraform-module-template/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/boldlink/terraform-module-template/actions)
-[![Build Status](https://github.com/boldlink/terraform-module-template/actions/workflows/pr-labeler.yaml/badge.svg)](https://github.com/boldlink/terraform-module-template/actions)
-[![Build Status](https://github.com/boldlink/terraform-module-template/actions/workflows/module-examples-tests.yaml/badge.svg)](https://github.com/boldlink/terraform-module-template/actions)
-[![Build Status](https://github.com/boldlink/terraform-module-template/actions/workflows/checkov.yaml/badge.svg)](https://github.com/boldlink/terraform-module-template/actions)
-[![Build Status](https://github.com/boldlink/terraform-module-template/actions/workflows/auto-merge.yaml/badge.svg)](https://github.com/boldlink/terraform-module-template/actions)
-[![Build Status](https://github.com/boldlink/terraform-module-template/actions/workflows/auto-badge.yaml/badge.svg)](https://github.com/boldlink/terraform-module-template/actions)
+[![License](https://img.shields.io/badge/License-Apache-blue.svg)](https://github.com/boldlink/terraform-aws-backup/blob/main/LICENSE)
+[![Latest Release](https://img.shields.io/github/release/boldlink/terraform-aws-backup.svg)](https://github.com/boldlink/terraform-aws-backup/releases/latest)
+[![Build Status](https://github.com/boldlink/terraform-aws-backup/actions/workflows/update.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-backup/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-backup/actions/workflows/release.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-backup/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-backup/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-backup/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-backup/actions/workflows/pr-labeler.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-backup/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-backup/actions/workflows/module-examples-tests.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-backup/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-backup/actions/workflows/checkov.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-backup/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-backup/actions/workflows/auto-merge.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-backup/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-backup/actions/workflows/auto-badge.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-backup/actions)
 
 [<img src="https://avatars.githubusercontent.com/u/25388280?s=200&v=4" width="96"/>](https://boldlink.io)
 
@@ -20,7 +20,7 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.11 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.20.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.47.0 |
 
 ## Providers
 
@@ -28,7 +28,10 @@ No providers.
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_backup_plan"></a> [backup\_plan](#module\_backup\_plan) | ./../../ | n/a |
+| <a name="module_backup_vault"></a> [backup\_vault](#module\_backup\_vault) | ./../../modules/vault | n/a |
 
 ## Resources
 
@@ -36,7 +39,9 @@ No resources.
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_name"></a> [name](#input\_name) | The display name of the stack | `string` | `"example-minimum-backup"` | no |
 
 ## Outputs
 
@@ -56,4 +61,4 @@ This repository uses third party software:
   * Install with `brew install tflint`
   * Manually use via pre-commit
 
-#### BOLDLink-SIG 2022
+#### BOLDLink-SIG 2024
