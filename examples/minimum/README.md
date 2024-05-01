@@ -41,7 +41,7 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_name"></a> [name](#input\_name) | The display name of the stack | `string` | `"Example-minimum-backup"` | no |
+| <a name="input_name"></a> [name](#input\_name) | The display name of the stack | `string` | `"example-minimum-backup"` | no |
 
 ## Outputs
 
