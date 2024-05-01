@@ -1,7 +1,7 @@
 variable "name" {
   description = "The display name of the stack."
   type        = string
-  default     = "Example-complete-backup"
+  default     = "example-complete-backup"
 }
 
 variable "force_destroy" {
@@ -36,8 +36,8 @@ variable "tags" {
     Project            = "terraform-modules"
     "user::CostCenter" = "terraform"
     Department         = "devops"
-    LayerName          = "Exampls"
-    LayerId            = "Examples"
+    LayerName          = "exampls"
+    LayerId            = "examples"
     Owner              = "Boldlink"
   }
 }

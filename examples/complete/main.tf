@@ -11,9 +11,10 @@ module "kms" {
 
 module "sns_topic" {
   #checkov:skip=CKV_TF_1 #"Ensure Terraform module sources use a commit hash"
-  source = "boldlink/sns/aws"
-  name   = "${var.name}-topic"
-  tags   = merge({ Name = "${var.name}-topic" }, var.tags)
+  source  = "boldlink/sns/aws"
+  version = "1.1.2"
+  name    = "${var.name}-topic"
+  tags    = merge({ Name = "${var.name}-topic" }, var.tags)
 }
 
 module "backup_vault" {
