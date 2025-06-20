@@ -15,6 +15,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - feat: Custom IAM role to authenticate when restoring and backing up the target resources
 - Examples with minimum and complete configuration
 
-[Unreleased]: https://github.com/boldlink/terraform-aws-backup/compare/1.0.0...HEAD
+## [1.0.1] - 30-04-2024
+### Description
+- fix: Add tags to the backup plan iam role
+- fix: Add missing null field
 
+[Unreleased]: https://github.com/boldlink/terraform-aws-backup/compare/1.0.1...HEAD
+
+[1.0.0]: https://github.com/boldlink/terraform-aws-backup/releases/tag/1.0.0
 [1.0.0]: https://github.com/boldlink/terraform-aws-backup/releases/tag/1.0.0
