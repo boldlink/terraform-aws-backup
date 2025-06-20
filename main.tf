@@ -3,7 +3,7 @@ resource "aws_backup_plan" "main" {
   dynamic "rule" {
     for_each = var.backup_rules
     content {
-      rule_name                = lookup(rule.value, "rule_name", )
+      rule_name                = lookup(rule.value, "rule_name", null)
       target_vault_name        = lookup(rule.value, "target_vault_name")
       schedule                 = lookup(rule.value, "schedule")
       enable_continuous_backup = lookup(rule.value, "enable_continuous_backup", null)
@@ -26,6 +26,7 @@ resource "aws_iam_role" "main" {
   count              = var.create_iam_role ? 1 : 0
   name               = "${var.plan_name}-role"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
+  tags               = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "backup" {
