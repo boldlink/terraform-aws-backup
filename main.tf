@@ -26,6 +26,7 @@ resource "aws_iam_role" "main" {
   count              = var.create_iam_role ? 1 : 0
   name               = "${var.plan_name}-role"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
+  tags               = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "backup" {
